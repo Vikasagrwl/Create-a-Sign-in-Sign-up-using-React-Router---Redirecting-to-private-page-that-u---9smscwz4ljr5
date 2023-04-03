@@ -21,7 +21,7 @@ const App = () => {
     
     <Switch>
       <Route path="/" exact>
-     <Login email={email} password={password} setLoggedIn={setLoggedIn} setNavigate={setNavigate}/>
+        {loggedIn? <Redirect to={'/dashboard'}/> : <Login email={email} password={password} setLoggedIn={setLoggedIn} setNavigate={setNavigate}/> }
       </Route>
       
       <Route path="/Register" exact>
@@ -29,7 +29,7 @@ const App = () => {
       </Route>
 
       <Route path="/dashboard" exact>
-       <Dashboard setLoggedIn={setLoggedIn}/> 
+       {loggedIn? <Dashboard setLoggedIn={setLoggedIn}/> : <Redirect to={'/'} />}
       </Route>
     </Switch>
   </Router>
